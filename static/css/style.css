@@ -1,0 +1,253 @@
+/* Base Page Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Main Container Layout */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    max-height: 700px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Chat Area Layout */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Map Area Layout */
+.map-container {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    background-color: #eee; 
+}
+
+/* Chat Title */
+.chat-container h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5em; 
+}
+
+/* Chat Log Area */
+#chat-log {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+/* Individual Message Bubble Base Style */
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 90%; 
+    word-wrap: break-word;
+    position: relative;
+    line-height: 1.4; 
+}
+
+/* User Message Alignment & Style */
+.message.user {
+    background-color: #d1eaff; 
+    margin-left: auto; 
+    border-bottom-right-radius: 0;
+    margin-right: 5px;
+    margin-left: 30px;
+}
+
+/* AI Message Alignment & Style */
+.message.ai {
+    background-color: #e9e9eb; 
+    margin-right: auto; 
+    border-bottom-left-radius: 0;
+    margin-left: 30px; 
+    margin-right: 5px; 
+}
+
+/* AI Icon using ::before pseudo-element */
+.message.ai::before {
+    content: '😃'; /*  emoji as the icon */
+    position: absolute;
+    left: -28px; 
+    top: 4px;  
+    font-size: 1.2em; 
+    opacity: 0.8;
+}
+
+/* Styling for the text part of a message (inside the bubble) */
+.message-text {
+  white-space: normal; 
+}
+
+
+/* Input Area Layout */
+.input-area {
+    display: flex;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* Text Input Field */
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+/* Send Button */
+#send-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 1em;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+#send-button:disabled,
+#user-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* --- Styles for AI Response Components (Location Buttons) --- */
+
+/* Container for the location buttons (OUTSIDE the .message bubble) */
+.locations-container {
+  margin-bottom: 10px; 
+  margin-right: auto; 
+  margin-left: 30px; 
+  padding-left: 5px; 
+  max-width: calc(90% - 30px); 
+  box-sizing: border-box;
+
+  /* Layout for buttons */
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Style for individual location buttons */
+.location-button {
+  box-sizing: border-box;
+  width: auto; 
+  max-width: 100%;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  text-align: left;
+
+  /* Button colors */
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #0056b3;
+
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-button:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.location-button:active {
+    background-color: #004085;
+}
+
+/* Style for the "Show More" button */
+.show-more-locations {
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  text-align: center;
+  align-self: flex-start;
+  max-width: fit-content;
+
+  background-color: #e8f0fe;
+  border: 1px solid #c6d9f9;
+  border-radius: 6px;
+  cursor: pointer;
+  font-style: italic;
+  color: #0056b3;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-top: 4px; 
+}
+
+.show-more-locations:hover {
+  background-color: #d6e6fd;
+  border-color: #a9c6f5;
+}
+
+.show-more-locations:active {
+    background-color: #c4d8fc;
+}
+
+/* Google Maps InfoWindow Styling (Basic) */
+
+.gm-style .gm-style-iw-c { 
+    padding: 0 !important; 
+    border-radius: 8px !important;
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,0.3);
+}
+.gm-style .gm-style-iw-d { 
+    overflow: hidden !important;
+}
+.gm-style .gm-style-iw-close {
+    top: 5px !important;
+    right: 5px !important;
+    opacity: 0.7;
+}
+.gm-style .gm-style-iw-close:hover {
+    opacity: 1.0;
+}
+
+.custom-poi-marker {
+    cursor: pointer;
+}
+

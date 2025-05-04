@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella travel agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_r1p_S4C24_3O6eLTTgKBpdhhrB-yzK4&libraries=maps,marker,core" defer></script>
+    </head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <h1>Ella - Your AI Travel Agent</h1>
+            <div id="chat-log">
+                 <div class="message ai"> Hi there, my name is Ella and I'll help you find your perfect destination. So, tell me about your dream trip! What are you in the mood for?</div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ask about a destination...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+# Ella - AI travel agent
+
+AI chatbot pro doporučování cestovních destinací s interaktivní mapou. Maturitní projekt IKT.
+
+## Popis
+
+Ella je webová aplikace postavená na Flasku, která využívá zpracování přirozeného jazyka (spaCy) k porozumění cestovním preferencím uživatele a doporučuje destinace z databáze. Doporučené lokace a zajímavá místa jsou vizualizovány pomocí Google Maps API.
+
+## Technologie
+
+* **Backend:** Python 3.9+, Flask, spaCy, Pandas
+* **Frontend:** HTML, CSS, JavaScript
+* **Mapy:** Google Maps JavaScript API
+* **Data:** CSV
+
+## Instalace
+
+1.  **Vytvořte virtuální prostředí (doporučeno):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Linux/macOS
+    # venv\Scripts\activate  # Windows
+    ```
+2.  **Nainstalujte závislosti:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+3.  **Stáhněte spaCy model:**
+    ```bash
+    python -m spacy download en_core_web_lg
+    ```
+4.  **Nastavte Google Maps API Klíč (pokud je nutné):**
+    * Získejte API klíč z [Google Cloud Console](https://console.cloud.google.com/). Ujistěte se, že máte povolené **Maps JavaScript API**.
+    * Otevřete soubor `templates/index.html`.
+    * Najděte řádek obsahující `<script src="https://maps.googleapis.com/maps/api/js?key=...">`.
+    * Nahraďte `AIzaSyD_r1p_S4C24_3O6eLTTgKBpdhhrB-yzK4` vaším platným API klíčem.
+    * V Google Cloud Console také nastavte **Map ID** (`9da1cfb76407c827` použitý v `script.js`) a povolte pro něj vektorové mapy (Vector Tiles).
+
+## Spuštění
+
+1.  **Aktivujte virtuální prostředí (pokud používáte):**
+    ```bash
+    source venv/bin/activate  # Linux/macOS
+    # venv\Scripts\activate  # Windows
+    ```
+2.  **Spusťte Flask server:**
+    ```bash
+    python app.py
+    ```
+3.  **Otevřete v prohlížeči:**
+    Aplikace bude dostupná na adrese `http://127.0.0.1:5001` (nebo adrese uvedené v terminálu).
+
+## Struktura projektu
+├── app.py               # Hlavní Flask aplikace, routing
+├── ai_logic.py          # Jádro logiky chatbota (třída Chatbot)
+├── data_processing.py   # Funkce pro doporučování destinací
+├── intent_detection.py  # Detekce záměru a entit pomocí spaCy
+├── mappings.py          # Mapování synonym a kategorií
+├── spacy_merger.py      # Pomůcka pro spaCy
+├── destinations.csv     # Databáze destinací
+├── points_of_interest.csv # Databáze bodů zájmu
+├── requirements.txt     # Seznam Python závislostí
+├── templates/
+│   └── index.html       # HTML šablona hlavní stránky
+└── static/
+├── css/
+│   └── style.css    # Styly pro frontend
+└── js/
+└── script.js    # JavaScript pro frontend a mapu
+
